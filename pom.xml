@@ -8,10 +8,10 @@
 		<version>3.4.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>Praktyki</groupId>
-	<artifactId>pilka_nozna_projekt</artifactId>
+	<groupId>pl.wasko.praktyki.odomanski</groupId>
+	<artifactId>football</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Pi-ka-Nozna-Projekt</name>
+	<name>Football</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
 	<licenses>
