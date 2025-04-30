@@ -15,10 +15,10 @@ import pl.wasko.praktyki.odomanski.repository.TransactionRepository;
 import java.util.List;
 
 @SpringBootApplication
-class PilkaNoznaProjektApplication {
+class FootballApplication {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext run = SpringApplication.run(PilkaNoznaProjektApplication.class, args);
+		ConfigurableApplicationContext run = SpringApplication.run(FootballApplication.class, args);
 	}
 
 	@Bean
