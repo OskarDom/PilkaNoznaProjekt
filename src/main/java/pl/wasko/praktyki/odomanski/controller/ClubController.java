@@ -27,7 +27,6 @@ public class ClubController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-
     @PostMapping
     public Club create(@RequestBody Club club) {
         return clubRepository.save(club);
