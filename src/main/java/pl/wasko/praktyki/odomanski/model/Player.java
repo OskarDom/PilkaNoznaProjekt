@@ -9,22 +9,27 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String imie;
-    private String nazwisko;
-    private Integer wiek;
+    private String name;
+    private String surname;
+    private Integer age;
 
+    // Relacja wielu do jednego: gracz należy do jednego klubu
     @ManyToOne
-    @JoinColumn(name = "klub_id")
+    @JoinColumn(name = "club_id")  // Kolumna w tabeli gracza, która wskazuje na klub
     private Club club;
 
-    @OneToMany(mappedBy = "pilkarz")
-    private List<Transaction> transakcje;
+    // Relacja jeden do wielu: klub ma wielu graczy
+    @OneToMany(mappedBy = "player") // Zakładając, że w klasie Transaction masz pole "player"
+    private List<Transaction> transactions;
 
-    // Konstruktor
-    public Player(String imie, String nazwisko, int wiek, Club club) {
-        this.imie = imie;
-        this.nazwisko = nazwisko;
-        this.wiek = wiek;
+    // Konstruktor bezargumentowy (konieczny do JPA)
+    public Player() {}
+
+    // Konstruktor z parametrami
+    public Player(String name, String surname, Integer age, Club club) {
+        this.name = name;
+        this.surname = surname;
+        this.age = age;
         this.club = club;
     }
 
@@ -37,43 +42,43 @@ public class Player {
         this.id = id;
     }
 
-    public Object getImie() {
-        return imie;
+    public String getName() {
+        return name;
     }
 
-    public void setImie(String imie) {
-        this.imie = imie;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getNazwisko() {
-        return nazwisko;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setNazwisko(String nazwisko) {
-        this.nazwisko = nazwisko;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public Integer getWiek() {
-        return wiek;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setWiek(Integer wiek) {
-        this.wiek = wiek;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
-    public Club getKlub() {
+    public Club getClub() {
         return club;
     }
 
-    public void setKlub(Club club) {
+    public void setClub(Club club) {
         this.club = club;
     }
 
-    public List<Transaction> getTransakcje() {
-        return transakcje;
+    public List<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setTransakcje(List<Transaction> transakcje) {
-        this.transakcje = transakcje;
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 }

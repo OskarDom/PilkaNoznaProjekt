@@ -36,9 +36,9 @@ public class PlayerController {
     public ResponseEntity<Player> update(@PathVariable Long id, @RequestBody Player playerDetails) {
         return playerRepository.findById(id)
                 .map(p -> {
-                    p.setImie((String) playerDetails.getImie());
-                    p.setNazwisko(playerDetails.getNazwisko());
-                    p.setWiek(playerDetails.getWiek());
+                    p.setName((String) playerDetails.getName());
+                    p.setSurname(playerDetails.getSurname());
+                    p.setAge(playerDetails.getAge());
                     return ResponseEntity.ok(playerRepository.save(p));
                 })
                 .orElse(ResponseEntity.notFound().build());

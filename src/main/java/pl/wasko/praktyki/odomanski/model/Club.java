@@ -10,11 +10,11 @@ public class Club {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nazwa;
-    private String kraj;
+    private String name;
+    private String country;
 
-    @OneToMany(mappedBy = "klub", cascade = CascadeType.ALL)
-    private List<Transaction> transakcje;
+    @OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+    private List<Transaction> transactions;
 
     // Domyślny konstruktor wymagany przez JPA
     public Club() {
@@ -22,8 +22,8 @@ public class Club {
 
     // Konstruktor z parametrami
     public Club(String nazwa, String kraj) {
-        this.nazwa = nazwa;
-        this.kraj = kraj;
+        this.name = nazwa;
+        this.country = kraj;
     }
 
     // Gettery i settery
@@ -31,30 +31,30 @@ public class Club {
         return id;
     }
 
-    public String getNazwa() {
-        return nazwa;
+    public String getName() {
+        return name;
     }
 
-    public void setNazwa(String nazwa) {
-        this.nazwa = nazwa;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getKraj() {
-        return kraj;
+    public String getCountry() {
+        return country;
     }
 
-    public void setKraj(String kraj) {
-        this.kraj = kraj;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
-    public List<Transaction> getTransakcje() {
-        return transakcje;
+    public List<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setTransakcje(List<Transaction> transakcje) {
-        this.transakcje = transakcje;
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
     }
 
-    public void getClass(String kraj) {
+    public void getClass(String country) {
     }
 }

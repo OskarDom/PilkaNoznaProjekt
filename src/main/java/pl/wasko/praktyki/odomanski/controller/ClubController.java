@@ -37,8 +37,8 @@ public class ClubController {
     public ResponseEntity<Club> update(@PathVariable Long id, @RequestBody Club clubDetails) {
         return clubRepository.findById(id)
                 .map(k -> {
-                    k.setNazwa(clubDetails.getNazwa());
-                    k.getClass(clubDetails.getKraj());
+                    k.setName(clubDetails.getName());
+                    k.getClass(clubDetails.getCountry());
                     return ResponseEntity.ok(clubRepository.save(k));
                 })
                 .orElse(ResponseEntity.notFound().build());

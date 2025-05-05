@@ -19,19 +19,15 @@ public class Transaction {
     @JoinColumn(name = "klub_id")
     private Club club;
 
-    private LocalDate dataPrzejscia;
-    private BigDecimal kwota;
-
-    // Domyślny konstruktor
-    public Transaction(String lionelMessi, String barcelona, String psg, double v) {
-    }
+    private LocalDate transactionDate;
+    private BigDecimal amount;
 
     // Konstruktor z parametrami
     public Transaction(Player player, Club club, LocalDate dataPrzejscia, BigDecimal kwota) {
         this.player = player;
         this.club = club;
-        this.dataPrzejscia = dataPrzejscia;
-        this.kwota = kwota;
+        this.transactionDate = dataPrzejscia;
+        this.amount = kwota;
     }
 
     // Gettery i settery
@@ -55,19 +51,19 @@ public class Transaction {
         this.club = club;
     }
 
-    public LocalDate getDataPrzejscia() {
-        return dataPrzejscia;
+    public LocalDate getTransactionDate() {
+        return transactionDate;
     }
 
-    public void setDataPrzejscia(LocalDate dataPrzejscia) {
-        this.dataPrzejscia = dataPrzejscia;
+    public void setTransactionDate(LocalDate transactionDate) {
+        this.transactionDate = transactionDate;
     }
 
-    public BigDecimal getKwota() {
-        return kwota;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setKwota(BigDecimal kwota) {
-        this.kwota = kwota;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }
