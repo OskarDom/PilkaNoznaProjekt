@@ -5,6 +5,7 @@ import io.jsonwebtoken.security.Keys;
 import java.security.Key;
 import java.util.Date;
 
+
 public class JwtAuthenticationFilter {
     private static final String SECRET_KEY = "twoj_sekret_klucz_musi_miec_32_znaki_lub_wiecej";
     private static final long EXPIRATION_TIME = 86400000; // 1 dzień
@@ -32,4 +33,9 @@ public class JwtAuthenticationFilter {
             return null; // Token nieprawidłowy
         }
     }
+
+
+
 }
+
+

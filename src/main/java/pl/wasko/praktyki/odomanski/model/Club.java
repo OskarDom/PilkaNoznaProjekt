@@ -1,5 +1,6 @@
 package pl.wasko.praktyki.odomanski.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -13,21 +14,29 @@ public class Club {
     private String country;
 
     @OneToMany(mappedBy = "club", cascade = CascadeType.ALL)
+    @JsonManagedReference(value = "club-transactions")  // Dopasowanie do Transaction
     private List<Transaction> transactions;
 
-    // Domyślny konstruktor wymagany przez JPA
     public Club() {
     }
 
-    // Konstruktor z parametrami
-    public Club(String nazwa, String kraj) {
-        this.name = nazwa;
-        this.country = kraj;
+    public Club(String name, String country) {
+        this.name = name;
+        this.country = country;
     }
 
-    // Gettery i settery
+    public Club(Long id, String name, String country) {
+        this.id = id;
+        this.name = name;
+        this.country = country;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -52,8 +61,5 @@ public class Club {
 
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
-    }
-
-    public void getClass(String country) {
     }
 }

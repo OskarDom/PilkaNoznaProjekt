@@ -1,5 +1,7 @@
 package pl.wasko.praktyki.odomanski.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -13,19 +15,17 @@ public class Player {
     private String surname;
     private Integer age;
 
-    // Relacja wielu do jednego: gracz należy do jednego klubu
     @ManyToOne
-    @JoinColumn(name = "club_id")  // Kolumna w tabeli gracza, która wskazuje na klub
+    @JoinColumn(name = "club_id")
+    @JsonBackReference
     private Club club;
 
-    // Relacja jeden do wielu: klub ma wielu graczy
-    @OneToMany(mappedBy = "player") // Zakładając, że w klasie Transaction masz pole "player"
+    @OneToMany(mappedBy = "player")
+    @JsonManagedReference(value = "player-transactions")
     private List<Transaction> transactions;
 
-    // Konstruktor bezargumentowy (konieczny do JPA)
     public Player() {}
 
-    // Konstruktor z parametrami
     public Player(String name, String surname, Integer age, Club club) {
         this.name = name;
         this.surname = surname;
@@ -33,7 +33,6 @@ public class Player {
         this.club = club;
     }
 
-    // Gettery i settery
     public Long getId() {
         return id;
     }

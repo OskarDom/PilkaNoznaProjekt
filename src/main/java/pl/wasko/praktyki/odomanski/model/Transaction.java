@@ -1,5 +1,6 @@
 package pl.wasko.praktyki.odomanski.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,16 +14,20 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "pilkarz_id")
+    @JsonBackReference(value = "player-transactions")
     private Player player;
 
     @ManyToOne
     @JoinColumn(name = "klub_id")
+    @JsonBackReference(value = "club-transactions")
     private Club club;
 
     private LocalDate transactionDate;
     private BigDecimal amount;
 
-    // Konstruktor z parametrami
+    public Transaction() {
+    }
+
     public Transaction(Player player, Club club, LocalDate dataPrzejscia, BigDecimal kwota) {
         this.player = player;
         this.club = club;
@@ -30,7 +35,6 @@ public class Transaction {
         this.amount = kwota;
     }
 
-    // Gettery i settery
     public Long getId() {
         return id;
     }

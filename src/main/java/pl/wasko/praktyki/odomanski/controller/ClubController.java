@@ -6,11 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import pl.wasko.praktyki.odomanski.model.Club;
 import pl.wasko.praktyki.odomanski.repository.ClubRepository;
 
-
 import java.util.List;
 
 @RestController
-@RequestMapping("/kluby")
+@RequestMapping("/api/clubs")
 public class ClubController {
 
     @Autowired
@@ -27,6 +26,7 @@ public class ClubController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
     @PostMapping
     public Club create(@RequestBody Club club) {
         return clubRepository.save(club);
@@ -35,10 +35,10 @@ public class ClubController {
     @PutMapping("/{id}")
     public ResponseEntity<Club> update(@PathVariable Long id, @RequestBody Club clubDetails) {
         return clubRepository.findById(id)
-                .map(k -> {
-                    k.setName(clubDetails.getName());
-                    k.getClass(clubDetails.getCountry());
-                    return ResponseEntity.ok(clubRepository.save(k));
+                .map(c -> {
+                    c.setName(clubDetails.getName());
+                    c.setCountry(clubDetails.getCountry());
+                    return ResponseEntity.ok(clubRepository.save(c));
                 })
                 .orElse(ResponseEntity.notFound().build());
     }
