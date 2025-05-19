@@ -80,4 +80,12 @@ public class Player {
     public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
+
+    public Object getLastName() {
+        return null;
+    }
+
+    public String getFirstName() {
+        return "";
+    }
 }

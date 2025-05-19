@@ -2,6 +2,8 @@ package pl.wasko.praktyki.odomanski.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import org.slf4j.Logger;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -69,5 +71,13 @@ public class Transaction {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public Player getPlayer() {
+        return null;
+    }
+
+    public Logger getNewClub() {
+        return null;
     }
 }
