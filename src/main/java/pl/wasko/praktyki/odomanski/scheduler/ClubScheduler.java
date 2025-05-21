@@ -17,9 +17,9 @@ public class ClubScheduler {
     }
 
     // CRON: co 10 sekund (0 */10 * * * * = co 10 sekund)
-    @Scheduled(cron = "*/60 * * * * *")
+    @Scheduled(cron = "*/10 * * * * *")
     public void logClubCount() {
         long count = clubRepository.count();
-        logger.info(" Liczba klubów w bazie: {}", count);
+        logger.info("Liczba klubów w bazie: {}", count);
     }
 }
